@@ -15,5 +15,14 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
+    - name: Setting Up User
+      run: bash user.sh
+
     - name: Update and Upgrade Packages
       run: bash update.sh
+
+    - name: Installing Desktop GNOME
+      run: bash desktop.sh
+
+    - name: Installing XRDP
+      run: bash xrdp.sh
