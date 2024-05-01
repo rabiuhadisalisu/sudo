@@ -8,7 +8,7 @@ defaults:
     shell: bash
 
 jobs:
-  run-script:
+  booting:
     runs-on: ubuntu-latest
 
     steps:
