@@ -27,5 +27,8 @@ jobs:
     - name: Installing XRDP
       run: bash xrdp.sh
 
+    - name: Installing Ngrok
+      run: bash ngrok.sh
+
     #- name: Holder
      #run: sleep 86400  # 24 hours in seconds
