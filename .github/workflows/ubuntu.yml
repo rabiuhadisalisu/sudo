@@ -1,7 +1,11 @@
 name: Core Stack
 
 on:
-  repository_dispatch:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   run-script:
