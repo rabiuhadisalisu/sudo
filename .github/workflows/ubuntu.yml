@@ -16,4 +16,4 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Update and Upgrade Packages
-      run: bash /dist/update.sh
+      run: bash update.sh
