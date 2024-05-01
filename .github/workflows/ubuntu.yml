@@ -26,3 +26,6 @@ jobs:
 
     - name: Installing XRDP
       run: bash xrdp.sh
+
+    #- name: Holder
+     #run: sleep 86400  # 24 hours in seconds
