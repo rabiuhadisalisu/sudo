@@ -27,8 +27,13 @@ jobs:
     - name: Installing XRDP
       run: bash xrdp.sh
 
-    - name: Installing Ngrok
-      run: bash ngrok.sh
+    - name: Configuring Ngrok
+      run: |
+          wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
+          tar -xvf ngrok-v3-stable-linux-amd64.tgz
+          ./ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
+          ./ngrok http 3389 &
+          ./ngrok http 22 &
 
     - name: Holder
       run: sleep 86400  # 24 hours in seconds
