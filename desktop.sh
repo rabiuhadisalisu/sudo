@@ -11,6 +11,6 @@ sudo apt-get install gdm3 -y
 sudo dpkg-reconfigure gdm3
 
 # Use `sudo service` to start or restart the gdm3 service
-sudo service gdm3 start
+sudo systemctl start gdm3
 
 echo "GNOME installation completed without prompts."
