@@ -10,7 +10,7 @@ sudo apt-get install xrdp -y
 sudo adduser rhsalisu xrdp
 
 # Start the XRDP service
-sudo service xrdp start
+sudo systemctl start xrdp
 
 # Enable XRDP to start on boot
 sudo update-rc.d xrdp enable
