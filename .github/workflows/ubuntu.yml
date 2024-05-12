@@ -21,11 +21,11 @@ jobs:
     - name: Update and Upgrade Packages
       run: bash update.sh
 
-    - name: Installing Desktop GNOME
-      run: bash desktop.sh
+    #- name: Installing Desktop GNOME
+      #run: bash desktop.sh
 
-    - name: Installing XRDP
-      run: bash xrdp.sh
+    #- name: Installing XRDP
+      #run: bash xrdp.sh
 
     - name: Hosting TunnelD
       run: bash tund.sh
