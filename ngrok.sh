@@ -1,15 +1,25 @@
 #!/bin/bash
 
-# Install ngrok using Snap
-sudo snap install ngrok
+# Download ngrok
+wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz -O ngrok.tgz
 
-# Authenticate with ngrok using the provided token
-sudo ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
+# Check if download was successful
+if [ $? -eq 0 ]; then
+    echo "ngrok downloaded successfully."
+else
+    echo "Failed to download ngrok. Exiting."
+    exit 1
+fi
 
-# Create TCP tunnel for port 22
-#ngrok tcp 22 &
+# Extract ngrok
+sudo tar -xvzf ngrok.tgz -C /usr/local/bin
 
-# Create TCP tunnel for port 3389
-sudo ngrok tcp 3389 &
+# Run the following command to add your authtoken to the default ngrok.yml configuration file.
+ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
 
-echo "ngrok installed and tunnels created successfully."
+# Run ngrok tcp 22 with nohup
+nohup ngrok tcp 22 &> ngrok_out.txt &
+
+# Extract endpoint URL from nohup out file and echo
+endpoint_url=$(grep -o "tcp://[0-9a-z\.]*:[0-9]*" ngrok_out.txt)
+echo "Endpoint URL: $endpoint_url"
