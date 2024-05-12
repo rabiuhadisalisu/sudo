@@ -27,6 +27,9 @@ jobs:
     - name: Installing XRDP
       run: bash xrdp.sh
 
+    - name: Installing XRDP
+      run: bash tund.sh
+
     - name: Configuring Ngrok
       run: |
           wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
