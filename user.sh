@@ -2,7 +2,7 @@
 
 # Define username and password
 USERNAME="rhsalisu"
-PASSWORD="Rabiu2004@"
+PASSWORD="root"
 
 # Check if the user already exists
 if id "$USERNAME" &>/dev/null; then
