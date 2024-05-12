@@ -1,4 +1,4 @@
-name: Core Stack
+name: OpenVPN Server
 
 on:
   workflow_dispatch:
@@ -21,6 +21,18 @@ jobs:
     - name: Update and Upgrade Packages
       run: bash sudo update.sh
 
+    - name: Firewall Tocking
+      run: bash sudo firewall.sh
+
+    - name: Configuring BinD
+      run: bash sudo bind9.sh
+
+    - name: Configuring npm
+      run: bash sudo npmtunnel.sh
+
+    - name: Update and Upgrade Packages
+      run: bash sudo openvpn.sh
+
     #- name: Installing Desktop GNOME
       #run: bash desktop.sh
 
@@ -29,6 +41,9 @@ jobs:
 
     - name: Hosting TunnelD
       run: bash sudo tund.sh
+
+    - name: Noping ngrok
+      run: bash sudo ngrok.sh
 
     #- name: Configuring Ngrok
       #run: |
