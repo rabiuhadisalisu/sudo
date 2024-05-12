@@ -31,6 +31,10 @@ options {
             8.8.4.4;
             ns1.afrinic.net;
             dns-admin.afrinic.net;
+            dns-admin.mtnbusiness.co.za;
+            ns0.iafrica.com;
+            ns-931.awsdns-52.net;
+            awsdns-hostmaster.amazon.com;
             1.1.1.1;
             1.0.0.1;
     // };
