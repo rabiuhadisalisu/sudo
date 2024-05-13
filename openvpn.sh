@@ -11,7 +11,7 @@ wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu22.amd_64.deb?_gl=1*1
 wget https://openvpn.net/downloads/openvpn-as-bundled-clients-latest.deb?_gl=1*1gitc91*_ga*MTE3OTE0NTMzMC4xNzE1NTYzMDM2*_ga_E45Z33NTV7*MTcxNTU2MzAzNy4xLjEuMTcxNTU2NTE3OC4wLjAuNjI3MDM0MjM2*_ga_SPGM8Y8Y79*MTcxNTU2MzAzNi4xLjEuMTcxNTU2NTE3OC4wLjAuMA..
 
 # Install OpenVPN
-sudo dpkg -i openvpn-as-bundled-clients-30.deb openvpn-as_2.13.1-d8cdeb9c-Ubuntu22_amd64.deb | tee installation.log
+sudo dpkg -i openvpn-as-bundled-clients-latest.deb openvpn-as-latest-ubuntu22.amd_64.deb | tee installation.log
 
 # Fetch Admin and Client UI URLs from the terminal output
 admin_ui=$(tail -n 5 installation.log | grep "Admin UI:" | awk '{print $NF}')
