@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Changing Working Directory
-mkdir /home/rhsalisu/install
+sudo mkdir /home/rhsalisu/install
 cd /home/rhsalisu/install
 
 # Update package lists
