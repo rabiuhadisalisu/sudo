@@ -4,7 +4,7 @@
 sudo apt update
 
 # Install WireGuard
-sudo apt install -y wireguard
+sudo apt install -y wireguard php-gettext
 
 # Generate server keys
 echo "Generating server keys..."
@@ -33,7 +33,7 @@ sudo systemctl enable --now wg-quick@wg0
 
 # Print server configuration
 echo "WireGuard server configuration:"
-cat /etc/wireguard/wg0.conf
+sudo cat /etc/wireguard/wg0.conf
 
 # Copying Configuration File TO Download Folder
 sudo mkdir /var/www/html/wg/
