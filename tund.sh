@@ -14,6 +14,6 @@ chmod 777 ./localtonet
 
 # Step 4: Set up Localtonet with authentication token
 echo "Setting up Localtonet with authentication token..."
-./localtonet authtoken AzqKXOBuEPJGhadsN2vF9HjfDikntxUWL
+nohup ./localtonet authtoken AzqKXOBuEPJGhadsN2vF9HjfDikntxUWL &
 
 echo "Localtonet setup completed."
