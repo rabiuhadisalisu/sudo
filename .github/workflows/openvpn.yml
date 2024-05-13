@@ -30,7 +30,7 @@ jobs:
     - name: Configuring npm
       run: bash npmtunnel.sh
 
-    - name: Update and Upgrade Packages
+    - name: Configuring OpenVPN
       run: bash openvpn.sh
 
     #- name: Installing Desktop GNOME
