@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Changing Working Directory
+mkdir /home/rhsalisu/install
+cd /home/rhsalisu/install
+
 # Update package lists
 sudo apt update
 
@@ -7,10 +11,12 @@ sudo apt update
 sudo apt install -y bridge-utils dmidecode iptables iproute2 libc6 libffi7 libgcc-s1 liblz4-1 liblzo2-2 libmariadb3 libpcap0.8 libssl3 libstdc++6 libsasl2-2 libsqlite3-0 net-tools python3-pkg-resources python3-migrate python3-sqlalchemy python3-mysqldb python3-ldap3 sqlite3 zlib1g python3-netaddr python3-arrow python3-lxml python3-constantly python3-hyperlink python3-automat python3-service-identity python3-cffi python3-defusedxml libcap-ng0 libnl-3-200 libnl-genl-3-200 python3-typing-extensions
 
 # Downloading Currents
-wget https://openvpn.net/downloads/openvpn-as-latest-ubuntu22.amd_64.deb?_gl=1*1e9ob5y*_ga*MTE3OTE0NTMzMC4xNzE1NTYzMDM2*_ga_E45Z33NTV7*MTcxNTU2MzAzNy4xLjEuMTcxNTU2NTEwNC4wLjAuNjI3MDM0MjM2*_ga_SPGM8Y8Y79*MTcxNTU2MzAzNi4xLjEuMTcxNTU2NTEwNC4wLjAuMA..
-wget https://openvpn.net/downloads/openvpn-as-bundled-clients-latest.deb?_gl=1*1gitc91*_ga*MTE3OTE0NTMzMC4xNzE1NTYzMDM2*_ga_E45Z33NTV7*MTcxNTU2MzAzNy4xLjEuMTcxNTU2NTE3OC4wLjAuNjI3MDM0MjM2*_ga_SPGM8Y8Y79*MTcxNTU2MzAzNi4xLjEuMTcxNTU2NTE3OC4wLjAuMA..
+cd /home/rhsalisu/install
+wget -O openvpn-as-latest-ubuntu22.amd_64.deb https://openvpn.net/downloads/openvpn-as-latest-ubuntu22.amd_64.deb
+wget -O openvpn-as-bundled-clients-latest.deb https://openvpn.net/downloads/openvpn-as-bundled-clients-latest.deb
 
 # Install OpenVPN
+cd /home/rhsalisu/install
 sudo dpkg -i openvpn-as-bundled-clients-latest.deb openvpn-as-latest-ubuntu22.amd_64.deb | tee installation.log
 
 # Fetch Admin and Client UI URLs from the terminal output
