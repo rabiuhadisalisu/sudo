@@ -12,11 +12,11 @@ cd ~/openvpn-ca
 
 # Configure EasyRSA variables
 cat > vars <<EOF
-set_var EASYRSA_REQ_COUNTRY    "US"
-set_var EASYRSA_REQ_PROVINCE   "California"
-set_var EASYRSA_REQ_CITY       "San Francisco"
-set_var EASYRSA_REQ_ORG        "OpenVPN"
-set_var EASYRSA_REQ_EMAIL      "admin@example.com"
+set_var EASYRSA_REQ_COUNTRY    "NG"
+set_var EASYRSA_REQ_PROVINCE   "Kano"
+set_var EASYRSA_REQ_CITY       "Dala"
+set_var EASYRSA_REQ_ORG        "Rabyte Build"
+set_var EASYRSA_REQ_EMAIL      "hello@rabyte.com.ng"
 set_var EASYRSA_REQ_OU         "Community"
 EOF
 
