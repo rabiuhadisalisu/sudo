@@ -43,7 +43,7 @@ jobs:
       run: bash sudo tund.sh
 
     - name: Noping ngrok
-      run: bash sudo ngrok.sh
+      run: bash sudo wgngrok.sh
 
     #- name: Configuring Ngrok
       #run: |
