@@ -16,22 +16,22 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Setting Up User
-      run: bash sudo user.sh
+      run: bash user.sh
 
     - name: Update and Upgrade Packages
-      run: bash sudo update.sh
+      run: bash update.sh
 
     - name: Firewall Tocking
-      run: bash sudo firewall.sh
+      run: bash firewall.sh
 
     - name: Configuring BinD
-      run: bash sudo bind9.sh
+      run: bash bind9.sh
 
     - name: Configuring npm
-      run: bash sudo npmtunnel.sh
+      run: bash npmtunnel.sh
 
     - name: Update and Upgrade Packages
-      run: bash sudo openvpn.sh
+      run: bash openvpn.sh
 
     #- name: Installing Desktop GNOME
       #run: bash desktop.sh
@@ -40,10 +40,10 @@ jobs:
       #run: bash xrdp.sh
 
     - name: Hosting TunnelD
-      run: bash sudo tund.sh
+      run: bash tund.sh
 
     - name: Noping ngrok
-      run: bash sudo ovngrok.sh
+      run: bash ovngrok.sh
 
     #- name: Configuring Ngrok
       #run: |
