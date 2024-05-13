@@ -21,6 +21,10 @@ ListenAddress = 0.0.0.0
 
 EOF
 
+# Installing Apache and Modules
+sudo apt install -y apache2 php php-mysql php-pear libapache2-mod-php php-mbstring php-gettext
+sudo systemctl restart apache2
+
 # Enable IP forwarding
 sudo sysctl -w net.ipv4.ip_forward=1
 
@@ -31,4 +35,9 @@ sudo systemctl enable --now wg-quick@wg0
 echo "WireGuard server configuration:"
 cat /etc/wireguard/wg0.conf
 
+# Copying Configuration File TO Download Folder
+sudo mkdir /var/www/html/wg/
+sudo cp /etc/wireguard/wg0.conf /var/www/html/wg/
+
 echo "WireGuard server installation and configuration completed."
+echo "Download Configuation File ar localhost/wg/wg0.conf"
