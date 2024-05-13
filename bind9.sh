@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Check if the script is being run as root
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root" 
-    exit 1
-fi
-
 # Install BIND9
 echo "Installing BIND9..."
 apt-get update
