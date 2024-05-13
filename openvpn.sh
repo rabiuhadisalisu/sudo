@@ -1,71 +1,21 @@
 #!/bin/bash
 
-# Update package list
+# Update package lists
 sudo apt update
 
-# Install OpenVPN and EasyRSA
-sudo apt install -y openvpn easy-rsa
+# Install required packages
+sudo apt install -y bridge-utils dmidecode iptables iproute2 libc6 libffi7 libgcc-s1 liblz4-1 liblzo2-2 libmariadb3 libpcap0.8 libssl3 libstdc++6 libsasl2-2 libsqlite3-0 net-tools python3-pkg-resources python3-migrate python3-sqlalchemy python3-mysqldb python3-ldap3 sqlite3 zlib1g python3-netaddr python3-arrow python3-lxml python3-constantly python3-hyperlink python3-automat python3-service-identity python3-cffi python3-defusedxml libcap-ng0 libnl-3-200 libnl-genl-3-200 python3-typing-extensions
 
-# Set up EasyRSA directory
-make-cadir ~/openvpn-ca
-cd ~/openvpn-ca
+# Install OpenVPN
+sudo dpkg -i openvpn-as-bundled-clients-30.deb openvpn-as_2.13.1-d8cdeb9c-Ubuntu22_amd64.deb | tee installation.log
 
-# Configure EasyRSA variables
-cat > vars <<EOF
-set_var EASYRSA_REQ_COUNTRY    "NG"
-set_var EASYRSA_REQ_PROVINCE   "Kano"
-set_var EASYRSA_REQ_CITY       "Dala"
-set_var EASYRSA_REQ_ORG        "Rabyte Build"
-set_var EASYRSA_REQ_EMAIL      "hello@rabyte.com.ng"
-set_var EASYRSA_REQ_OU         "Community"
-EOF
+# Fetch Admin and Client UI URLs from the terminal output
+admin_ui=$(tail -n 5 installation.log | grep "Admin UI:" | awk '{print $NF}')
+client_ui=$(tail -n 5 installation.log | grep "Client UI:" | awk '{print $NF}')
+username=$(tail -n 5 installation.log | grep "Login as" | awk '{print $NF}')
+password=$(tail -n 5 installation.log | grep "Login as" | awk '{print $(NF-1)}')
 
-# Initialize PKI (Public Key Infrastructure)
-./easyrsa init-pki
-./easyrsa build-ca nopass
-
-# Generate server keypair and certificate
-./easyrsa gen-req server nopass
-./easyrsa sign-req server server
-
-# Generate Diffie-Hellman parameters
-./easyrsa gen-dh
-
-# Generate HMAC signature
-openvpn --genkey --secret pki/ta.key
-
-# Move keys and certificates to OpenVPN directory
-sudo cp pki/ca.crt pki/private/server.key pki/issued/server.crt pki/dh.pem pki/ta.key /etc/openvpn
-
-# Copy sample server configuration file
-gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf
-
-# Enable IP forwarding
-sudo sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
-sudo sysctl -p
-
-# Configure firewall rules to allow OpenVPN traffic (UDP and TCP)
-sudo ufw allow 1194/udp
-sudo ufw allow OpenSSH
-sudo ufw disable
-#sudo ufw enable
-
-# Start OpenVPN service
-sudo systemctl start openvpn@server
-sudo systemctl enable openvpn@server
-
-# Install and configure OpenVPN WebUI (OpenVPN-Admin)
-sudo apt install -y apache2 php php-mysql php-pear libapache2-mod-php php-mbstring php-gettext
-sudo apt install -y openvpn-auth-ldap
-sudo systemctl restart apache2
-
-sudo mkdir /var/www/openvpn
-sudo git clone https://github.com/Adreax/OpenVPN-Admin.git /var/www/openvpn
-sudo cp /var/www/openvpn/config.php.example /var/www/openvpn/config.php
-
-# Update OpenVPN-Admin configuration
-sudo sed -i "s/define('CONFIG_DB_NAME', 'admin');/define('CONFIG_DB_NAME', 'rhsalisu');/" /var/www/openvpn/config.php
-sudo sed -i "s/define('CONFIG_DB_USER', 'root');/define('CONFIG_DB_USER', 'rhsalisu');/" /var/www/openvpn/config.php
-sudo sed -i "s/define('CONFIG_DB_PASS', 'admin');/define('CONFIG_DB_PASS', 'Rabiu2004@');/" /var/www/openvpn/config.php
-
-echo "OpenVPN server installation and configuration completed."
+# Display Admin and Client UI URLs along with login credentials
+echo "Admin UI: $admin_ui"
+echo "Client UI: $client_ui"
+echo "Login as '$username' with '$password' to continue"
