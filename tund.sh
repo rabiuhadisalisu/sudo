@@ -10,7 +10,9 @@ sudo unzip localtonet-linux-x64.zip -d /usr/local/bin
 
 # Step 4: Set up Localtonet with authentication token
 echo "Setting up Localtonet with authentication token..."
-nohup localtonet authtoken AzqKXOBuEPJGhadsN2vF9HjfDikntxUWL &> localtonet.txt &
-cat localtonet.txt
+nohup localtonet authtoken AzqKXOBuEPJGhadsN2vF9HjfDikntxUWL &> localtonet.out.txt &
+nohup localtonet app &> gaster.out.txt
+cat localtonet.out.txt
+cat gaster.out.txt
 
 echo "Localtonet setup completed."
