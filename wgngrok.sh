@@ -20,6 +20,7 @@ ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
 # Run ngrok tcp 22 with nohup
 nohup ngrok tcp 51820 &> ngrok_out.txt &
 nohup ngrok tcp 22 &> ngrok_ssh.txt &
+ngeok ngrok http --domain=readily-touching-teal.ngrok-free.app 80 &
 
 # Extract endpoint URL from nohup out file and echo
 listen_url=$(grep -o "tcp://[0-9a-z\.]*:[0-9]*" ngrok_out.txt)
