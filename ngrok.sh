@@ -4,7 +4,7 @@
 sudo snap install ngrok
 
 # Authenticate with ngrok using the provided token
-sudo ngrok authtoken 2Hd7yeF4INCKbg2aP9rGMLnDqBX_5K7WhATjW8eUxS6UoHSRa
+sudo ngrok authtoken 2jjqJ8mTlps4zo2wDNnREY5Xups_5BJT4C1zFSDQcyGQYqg1b
 
 # Create TCP tunnel for port 22
 #ngrok tcp 22 &
